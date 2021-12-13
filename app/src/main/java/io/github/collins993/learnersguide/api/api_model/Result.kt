@@ -1,7 +1,9 @@
-package io.github.collins993.learnersguide.model
+package io.github.collins993.learnersguide.api.api_model
 
 
 import com.google.gson.annotations.SerializedName
+import io.github.collins993.learnersguide.db.entity.Courses
+import java.io.Serializable
 
 data class Result(
     @SerializedName("_class")
@@ -47,4 +49,16 @@ data class Result(
     val url: String?,
     @SerializedName("visible_instructors")
     val visibleInstructors: List<VisibleInstructor>?
-)
+): Serializable {
+
+    fun toCourses(): Courses{
+        return Courses(
+            title = title,
+            headLine = headline,
+            url = url,
+            image = image480x270
+
+
+        )
+    }
+}

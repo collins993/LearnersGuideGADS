@@ -4,7 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import io.github.collins993.learnersguide.model.CourseResponse
+import io.github.collins993.learnersguide.api.api_model.CourseResponse
+import io.github.collins993.learnersguide.db.entity.Courses
 import io.github.collins993.learnersguide.repository.Repository
 import io.github.collins993.learnersguide.utils.Resource
 import kotlinx.coroutines.launch
@@ -61,6 +62,27 @@ class MyViewModel(
         }
         return Resource.Error(response.message())
     }
+
+    /*
+    ********
+    * *
+    *
+    *
+     */
+
+
+    //Saving model in database
+    fun saveCourse(courses: Courses) = viewModelScope.launch {
+        repository.upsert(courses)
+    }
+
+    //Deleting model from database
+    fun deleteCourse(courses: Courses) = viewModelScope.launch {
+        repository.deleteCourse(courses)
+    }
+
+    //Getting all data in database
+    fun getSavedCourse() = repository.getSavedCourse()
 
 
 

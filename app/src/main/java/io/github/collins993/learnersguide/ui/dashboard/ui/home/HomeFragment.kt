@@ -2,88 +2,74 @@ package io.github.collins993.learnersguide.ui.dashboard.ui.home
 
 import android.app.Application
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import io.github.collins993.learnersguide.R
+import io.github.collins993.learnersguide.adapter.CourseAdapter
 import io.github.collins993.learnersguide.databinding.FragmentHomeBinding
 import io.github.collins993.learnersguide.repository.Repository
-import io.github.collins993.learnersguide.utils.Constants.Companion.BASE_URL
 import io.github.collins993.learnersguide.utils.Resource
 import io.github.collins993.learnersguide.viewmodel.MyViewModel
 import io.github.collins993.learnersguide.viewmodel.ViewModelProviderFactory
+import io.github.collins993.learnersguide.db.CourseDatabase
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var homeViewModel: MyViewModel
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private lateinit var binding: FragmentHomeBinding
+    lateinit var courseAdapter: CourseAdapter
 
 
-        //val newsRepository = NewsRepository(ArticleDatabase(requireActivity().applicationContext))
-        val viewModelProviderFactory = ViewModelProviderFactory(Application(), Repository())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding = FragmentHomeBinding.bind(view)
+        val courseRepository = Repository(CourseDatabase(requireActivity().applicationContext))
+        val viewModelProviderFactory = ViewModelProviderFactory(Application(), courseRepository)
         homeViewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(MyViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        setUpRecyclerView()
 
-        val textView: TextView = binding.textHome
+        courseAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("courses", it)
+            }
+            findNavController().navigate(R.id.action_nav_home_to_webViewFragment, bundle)
+        }
+
         homeViewModel.courseList.observe(viewLifecycleOwner, Observer { response ->
 
             when (response) {
                 is Resource.Success -> {
                     //hideProgressBar()
-                    response.data?.results?.let { newsResponse ->
-
-                        for (singleResult in newsResponse) {
-                            singleResult.title
-                            singleResult.headline
-                            singleResult.price
-                            singleResult.url
-
-                            Log.i("responseUrl", "${BASE_URL + singleResult.url}")
-                            Log.i("image", "${singleResult.image480x270}")
-
-                            Log.i(
-                                "response",
-                                "${singleResult.title} \n" +
-                                        " ${singleResult.headline} \n" +
-                                        " ${singleResult.price} \n" +
-                                        " ${singleResult.url} "
-                            )
-                        }
+                    response.data?.results?.let { results ->
 
 
-//                        newsAdapter.differ.submitList(newsResponse.articles.toList())
-//                        val totalPages = newsResponse.totalResults / QUERY_PAGE_SIZE + 2
-//                        isLastPage = viewModel.breakingNewsPage == totalPages
-//                        if(isLastPage) {
-//                            binding.rvBreakingNews.setPadding(0,0,0,0)
-//                        }
+
+                        courseAdapter.differ.submitList(results.map { it.toCourses() })
+
+
+//                            Log.i("responseUrl", "${BASE_URL + singleResult.url}")
+
+
                     }
                 }
             }
 
         })
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setUpRecyclerView() {
+        courseAdapter = CourseAdapter()
+        binding.rvCourses.apply {
+            adapter = courseAdapter
+            layoutManager = LinearLayoutManager(activity)
+            //addOnScrollListener(this@BreakingNewsFragment.scrollListener)
+        }
     }
 }

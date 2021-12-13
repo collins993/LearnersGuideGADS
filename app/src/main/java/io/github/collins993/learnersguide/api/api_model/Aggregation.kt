@@ -1,7 +1,5 @@
-package io.github.collins993.learnersguide.model
+package io.github.collins993.learnersguide.api.api_model
 
-
-import com.google.gson.annotations.SerializedName
 
 data class Aggregation(
     val id: String,

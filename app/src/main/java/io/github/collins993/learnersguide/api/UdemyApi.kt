@@ -1,6 +1,6 @@
 package io.github.collins993.learnersguide.api
 
-import io.github.collins993.learnersguide.model.CourseResponse
+import io.github.collins993.learnersguide.api.api_model.CourseResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

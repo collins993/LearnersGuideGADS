@@ -1,51 +1,48 @@
 package io.github.collins993.learnersguide.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import io.github.collins993.mvvmtraining.databinding.ItemArticlePreviewBinding
-import io.github.collins993.mvvmtraining.models.Article
+import io.github.collins993.learnersguide.databinding.CourseItemsBinding
+import io.github.collins993.learnersguide.db.entity.Courses
 
-class CourseAdapter() : RecyclerView.Adapter<CourseAdapter.ArticleViewHolder>() {
+class CourseAdapter() : RecyclerView.Adapter<CourseAdapter.CourseViewHolder>() {
 
 
-    inner class ArticleViewHolder(val binding: ItemArticlePreviewBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class CourseViewHolder(val binding: CourseItemsBinding) : RecyclerView.ViewHolder(binding.root)
 
-    private val differCallback = object : DiffUtil.ItemCallback<Article>() {
+    private val differCallback = object : DiffUtil.ItemCallback<Courses>() {
 
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+        override fun areItemsTheSame(oldItem: Courses, newItem: Courses): Boolean {
             return oldItem.url == newItem.url
         }
 
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+        override fun areContentsTheSame(oldItem: Courses, newItem: Courses): Boolean {
             return oldItem == newItem
         }
     }
 
     val differ = AsyncListDiffer(this, differCallback)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(ItemArticlePreviewBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
+        return CourseViewHolder(CourseItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val article = differ.currentList[position]
+    override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
+        val courses = differ.currentList[position]
 
-        holder.binding.tvSource.text = article.source?.name
-        holder.binding.tvTitle.text = article.title
-        holder.binding.tvDescription.text = article.description
-        holder.binding.tvPublishedAt.text = article.publishedAt
+        holder.binding.title.text = courses.title
+        holder.binding.headline.text = courses.headLine
 
         Glide.with(holder.itemView.context)
-            .load(article.urlToImage)
-            .into(holder.binding.ivArticleImage)
+            .load(courses.image)
+            .into(holder.binding.ivCourseImage)
 
         holder.itemView.setOnClickListener {
-            onItemClickListener?.let { it(article) }
+            onItemClickListener?.let { it(courses) }
         }
 
     }
@@ -54,10 +51,10 @@ class CourseAdapter() : RecyclerView.Adapter<CourseAdapter.ArticleViewHolder>() 
         return differ.currentList.size
     }
 
-    private var onItemClickListener: ((Article) -> Unit)? = null
+    private var onItemClickListener: ((Courses) -> Unit)? = null
 
 
-    fun setOnItemClickListener(listener: (Article) -> Unit){
+    fun setOnItemClickListener(listener: (Courses) -> Unit){
         onItemClickListener = listener
     }
 
