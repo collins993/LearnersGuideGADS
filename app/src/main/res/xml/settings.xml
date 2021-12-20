@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="General"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="edit_username_key"
+            android:title="Username"
+            app:iconSpaceReserved="false"/>
+
+        <Preference
+            android:key="reset_password_key"
+            android:title="Reset Password"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="about_app_key"
+            android:title="About App"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="privacy_policy_key"
+            android:title="Privacy Policy"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="version_key"
+            android:title="Version"
+            android:summary="1.0"
+            app:iconSpaceReserved="false" />
+
+        <Preference
+            android:key="logout_key"
+            android:title="Log Out"
+            app:iconSpaceReserved="false" />
+
+
+
+    </PreferenceCategory>
+
+
+
+</PreferenceScreen>

@@ -13,15 +13,40 @@
         <entry key="..\:/Users/MyAccount_locks/Desktop/LearnersGuide/app/src/main/res/layout/nav_header_dash_board.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/MyAccount_locks/Desktop/LearnersGuide/app/src/main/res/menu/activity_main_drawer.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/MyAccount_locks/Desktop/LearnersGuide/app/src/main/res/menu/dash_board.xml" value="0.19895833333333332" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable-v24/ic_person_black.xml" value="0.13425925925925927" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable/ic_add.xml" value="0.3828125" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable/ic_chat.xml" value="0.3828125" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable/ic_email.xml" value="0.13425925925925927" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable/ic_favorite.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable/ic_search.xml" value="0.3828125" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/drawable/item_bg.xml" value="0.3828125" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_create_profile.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_dash_board.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_edit_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_login.xml" value="0.35648148148148145" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_reset_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_sign_up.xml" value="0.3605128205128205" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/app_bar_dash_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/content_dash_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/course_items.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_about_app.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_add_suggestion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_favourites.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_reset_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_saved_web_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_suggested_web_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_suggestion.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_user_profile.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_web_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/nav_header_dash_board.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/profile_fragment.xml" value="0.36018518518518516" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/search_course_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/suggestion_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/menu/dash_board.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/xml/settings.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Learners Guide"
+                android:text="@string/app_name"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Log into your account"
+                android:text="@string/log_into_your_account"
                 android:maxLines="1"
                 android:textSize="25sp" />
 
@@ -50,7 +50,7 @@
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/ic_error"
-                android:hint="Email Address">
+                android:hint="@string/email_address">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                 app:startIconDrawable="@drawable/ic_password"
                 app:endIconMode="password_toggle"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Password">
+                android:hint="@string/password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -80,13 +80,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/txt_forgot_passowrd"
+                android:id="@+id/txt_forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:layout_marginTop="5dp"
                 android:layout_gravity="end"
-                android:text="forgot password ?"/>
+                android:layout_marginTop="5dp"
+                android:padding="15dp"
+                android:text="@string/forgot_password" />
 
             <Button
                 android:id="@+id/login_btn"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/red"
-                android:text="Login"
+                android:text="@string/login"
                 app:cornerRadius="50dp" />
 
             <ProgressBar
@@ -110,14 +110,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:padding="15dp"
-                android:text="Don't have an account ?"/>
+                android:text="@string/don_t_have_an_account"/>
 
             <Button
                 android:id="@+id/login_signup_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
                 app:cornerRadius="50dp" />
 
         </LinearLayout>

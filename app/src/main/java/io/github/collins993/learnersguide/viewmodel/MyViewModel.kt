@@ -15,27 +15,26 @@ import java.io.IOException
 class MyViewModel(
     app: Application,
     private val repository: Repository
-): AndroidViewModel(app) {
+) : AndroidViewModel(app) {
 
 
     val courseList: MutableLiveData<Resource<CourseResponse>> = MutableLiveData()
-    var courseResponse : CourseResponse? = null
+    val searchCourse: MutableLiveData<Resource<CourseResponse>> = MutableLiveData()
+    var courseResponse: CourseResponse? = null
 
     init {
         getCourseList()
     }
 
-    fun getCourseList() = viewModelScope.launch {
+    //Get list of courses
+    private fun getCourseList() = viewModelScope.launch {
         courseList.postValue(Resource.Loading())
         try {
-                val response = repository.getCourseList()
+            val response = repository.getCourseList()
             courseList.postValue(courseListResponse(response))
 
-                //breakingNews.postValue(Resource.Error("No Internet Connection"))
-
-
-        }catch (t: Throwable) {
-            when(t){
+        } catch (t: Throwable) {
+            when (t) {
                 is IOException -> courseList.postValue(Resource.Error("Network Failure"))
                 else -> courseList.postValue(Resource.Error("Conversion Error"))
             }
@@ -43,13 +42,13 @@ class MyViewModel(
     }
 
     private fun courseListResponse(response: Response<CourseResponse>): Resource<CourseResponse> {
-        if (response.isSuccessful){
+        if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
 
                 //Pagination by saving initial response in old article and adding it to new article
                 //breakingNewsPage++
 
-                if (courseResponse == null){
+                if (courseResponse == null) {
                     courseResponse = resultResponse
                 }
 //                else{
@@ -62,6 +61,44 @@ class MyViewModel(
         }
         return Resource.Error(response.message())
     }
+
+    //Get searched list of courses
+    fun searchCourse(searchQuery: String) = viewModelScope.launch {
+        searchCourse.postValue(Resource.Loading())
+        try {
+            val response = repository.searchCourse(searchQuery)
+
+            searchCourse.postValue(searchListResponse(response))
+
+        } catch (t: Throwable) {
+            when (t) {
+                is IOException -> searchCourse.postValue(Resource.Error("Network Failure"))
+                else -> searchCourse.postValue(Resource.Error("Conversion Error"))
+            }
+        }
+    }
+
+    private fun searchListResponse(response: Response<CourseResponse>): Resource<CourseResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+
+                //Pagination by saving initial response in old article and adding it to new article
+                //breakingNewsPage++
+
+                if (courseResponse == null) {
+                    courseResponse = resultResponse
+                }
+//                else{
+//                    val oldArticles = breakingNewsResponse?.articles
+//                    val newArticles = resultResponse.articles
+//                    oldArticles?.addAll(newArticles)
+//                }
+                return Resource.Success(courseResponse ?: resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+
 
     /*
     ********
@@ -83,7 +120,6 @@ class MyViewModel(
 
     //Getting all data in database
     fun getSavedCourse() = repository.getSavedCourse()
-
 
 
 }

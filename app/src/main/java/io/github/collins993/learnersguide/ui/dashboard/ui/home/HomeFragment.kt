@@ -3,6 +3,7 @@ package io.github.collins993.learnersguide.ui.dashboard.ui.home
 import android.app.Application
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,7 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var homeViewModel: MyViewModel
     private lateinit var binding: FragmentHomeBinding
-    lateinit var courseAdapter: CourseAdapter
+    private lateinit var courseAdapter: CourseAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,18 +47,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             when (response) {
                 is Resource.Success -> {
-                    //hideProgressBar()
+                    hideProgressBar()
                     response.data?.results?.let { results ->
-
-
-
                         courseAdapter.differ.submitList(results.map { it.toCourses() })
 
-
-//                            Log.i("responseUrl", "${BASE_URL + singleResult.url}")
-
-
                     }
+                }
+                is Resource.Error -> {
+                    hideProgressBar()
+                    Toast.makeText(activity, "${response.message}", Toast.LENGTH_LONG).show()
+                }
+                is Resource.Loading -> {
+                    showProgressBar()
                 }
             }
 
@@ -71,5 +72,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             layoutManager = LinearLayoutManager(activity)
             //addOnScrollListener(this@BreakingNewsFragment.scrollListener)
         }
+    }
+
+    private fun hideProgressBar() {
+        binding.paginationProgressBar.visibility = View.INVISIBLE
+        //isLoading = false
+    }
+
+    private fun showProgressBar() {
+        binding.paginationProgressBar.visibility = View.VISIBLE
+        //isLoading = true
     }
 }

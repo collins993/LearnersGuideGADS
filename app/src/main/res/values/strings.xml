@@ -14,4 +14,40 @@
     <string name="learners_guide">Learners Guide!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="enter_your_email_address_and_we_will_send_you_instructions_to_reset_your_password">Enter your email address and we will send you instructions to reset your password.</string>
+    <string name="now_loading">now loading.....</string>
+    <string name="log_into_your_account">Log into your account</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">forgot password ?</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account ?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_your_account">Create your account</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="proceed">Proceed</string>
+    <string name="reset_your_password">Reset your password</string>
+    <string name="courses">Courses</string>
+    <string name="profile">Profile</string>
+    <string name="favourites">Favourites</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="search">Search</string>
+    <string name="log_out">Log out</string>
+    <string name="create_your_profile">Create Your Profile</string>
+    <string name="username">Username</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="save">Save</string>
+    <string name="edit_your_profile">Edit Your Profile</string>
+    <string name="your_suggestions">Your Suggestions</string>
+    <string name="suggest_a_course_to_take">Suggest a course to take!</string>
+    <string name="title">Title</string>
+    <string name="url">Url</string>
+    <string name="finish">Finish</string>
+    <string name="headline">HeadLine</string>
+    <string name="date">Date</string>
+    <string name="settings">Settings</string>
+
 </resources>

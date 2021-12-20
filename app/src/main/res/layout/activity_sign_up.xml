@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Learners Guide"
+                android:text="@string/app_name"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
@@ -35,41 +35,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create your account"
+                android:text="@string/create_your_account"
                 android:maxLines="1"
                 android:textSize="25sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_input_layout_username"
-                app:startIconDrawable="@drawable/ic_person"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="clear_text"
-                app:errorEnabled="true"
-                android:layout_marginTop="30dp"
-                app:boxStrokeColor="@color/black"
-                app:errorIconDrawable="@drawable/ic_error"
-                android:hint="username"
-                app:counterEnabled="true"
-                app:counterMaxLength="12"
-                app:hintTextColor="@color/black">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:maxLength="12"
-                    android:id="@+id/username"
-                    android:textColor="@color/black"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 app:startIconDrawable="@drawable/ic_email"
+                android:layout_marginTop="30dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:boxStrokeColor="@color/black"
@@ -77,7 +51,7 @@
                 app:errorEnabled="true"
                 android:id="@+id/txt_input_layout_email"
                 app:errorIconDrawable="@drawable/ic_error"
-                android:hint="Email Address">
+                android:hint="@string/email_address">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email_address"
@@ -98,7 +72,7 @@
                 android:id="@+id/txt_input_layout_password"
                 app:hintTextColor="@color/black"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Password">
+                android:hint="@string/password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -117,8 +91,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/red"
-                android:text="Register"
+                android:text="@string/register"
                 app:cornerRadius="50dp" />
+
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -133,14 +108,14 @@
                 android:textSize="20sp"
                 android:layout_marginTop="15dp"
                 android:padding="15dp"
-                android:text="Already have an account ?"/>
+                android:text="@string/already_have_an_account"/>
 
             <Button
                 android:id="@+id/signup_login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Login"
+                android:text="@string/login"
                 app:cornerRadius="50dp" />
 
         </LinearLayout>

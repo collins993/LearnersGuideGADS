@@ -8,6 +8,8 @@ class Repository(val db : CourseDatabase) {
 
     suspend fun getCourseList() = RetrofitInstance.api.getCourseList()
 
+    suspend fun searchCourse(searchQuery: String) = RetrofitInstance.api.searchCourse(searchQuery)
+
     suspend fun upsert(courses: Courses) = db.getCourseDao().upsert(courses)
 
     fun getSavedCourse() = db.getCourseDao().getAllCourses()

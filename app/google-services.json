@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "548393505063",
+    "project_id": "my-projects-7b7ac",
+    "storage_bucket": "my-projects-7b7ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548393505063:android:5ce860682cd15d7631d902",
+        "android_client_info": {
+          "package_name": "io.github.collins993.learnersguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "548393505063-dh8c9jbfn33437c04rqc4vllvegko5m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9xhovcbi2W5ERWzrw7IIapAcXFzTlPiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548393505063-dh8c9jbfn33437c04rqc4vllvegko5m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

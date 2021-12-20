@@ -43,10 +43,14 @@ class WebViewFragment : Fragment() {
 
 
         val courses = args.courses
+        //val suggestedCourses = args.suggestedCourses
+
 
         binding.webView.apply {
             webViewClient = WebViewClient()
             courses.url?.let { loadUrl(BASE_URL + it) }
+
+//            suggestedCourses.url?.let { loadUrl(it) }
         }
 
         binding.fab.setOnClickListener {
