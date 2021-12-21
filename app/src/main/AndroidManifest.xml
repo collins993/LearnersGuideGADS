@@ -11,10 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LearnersGuide">
-        <activity android:name=".ui.authentication.ResetPasswordActivity"
-            android:exported="false"/>
-        <activity android:name=".ui.EditProfileActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ui.onboarding.screens.ViewPagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.authentication.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.EditProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.CreateProfileActivity"
             android:exported="false" />

@@ -54,17 +54,17 @@ class SuggestedWebViewFragment : Fragment() {
 //            suggestedCourses.url?.let { loadUrl(it) }
         }
 
-        binding.fab.setOnClickListener {
-
-            val saveCourse = Courses(
-                title = courses.title,
-                headLine = courses.username,
-                url = courses.url,
-                image = courses.img
-            )
-            webViewViewModel.saveCourse(saveCourse)
-            Snackbar.make(binding.root, "Course saved successfully", Snackbar.LENGTH_SHORT).show()
-        }
+//        binding.fab.setOnClickListener {
+//
+//            val saveCourse = Courses(
+//                title = courses.title,
+//                headLine = courses.username,
+//                url = courses.url,
+//                image = courses.img
+//            )
+//            webViewViewModel.saveCourse(saveCourse)
+//            Snackbar.make(binding.root, "Course saved successfully", Snackbar.LENGTH_SHORT).show()
+//        }
 
         return root
     }

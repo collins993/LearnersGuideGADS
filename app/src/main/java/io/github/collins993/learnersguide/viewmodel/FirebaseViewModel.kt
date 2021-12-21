@@ -235,6 +235,8 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
     fun uploadToStorage(image: Uri) {
         var errorCode = -1
         viewModelScope.launch {
+
+            _downloadUrlStatus.postValue(Resource.Loading())
             try {
                 val fileReference = storage?.child(System.currentTimeMillis().toString() + ".jpg")
 

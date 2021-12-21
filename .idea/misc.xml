@@ -27,6 +27,7 @@
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_reset_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_sign_up.xml" value="0.3605128205128205" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_view_pager.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/app_bar_dash_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/content_dash_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/course_items.xml" value="0.2957427536231884" />
@@ -36,10 +37,12 @@
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_reset_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_saved_web_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_suggest_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_suggested_web_view.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_suggestion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_user_profile.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_web_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_welcome.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/nav_header_dash_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/profile_fragment.xml" value="0.36018518518518516" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/search_course_fragment.xml" value="0.36666666666666664" />

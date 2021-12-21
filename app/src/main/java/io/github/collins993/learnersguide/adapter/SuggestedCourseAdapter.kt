@@ -1,5 +1,6 @@
 package io.github.collins993.learnersguide.adapter
 
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -37,7 +38,9 @@ class SuggestedCourseAdapter() : RecyclerView.Adapter<SuggestedCourseAdapter.Cou
         val suggestedCourses = differ.currentList[position]
 
         holder.binding.courseTitle.text = suggestedCourses.title
-        holder.binding.date.text = suggestedCourses.date.toString()
+        holder.binding.username.text = suggestedCourses.username
+        holder.binding.date.text =  DateUtils.getRelativeTimeSpanString(suggestedCourses.date!!)
+
 
         Glide.with(holder.itemView.context)
             .load(suggestedCourses.img)
