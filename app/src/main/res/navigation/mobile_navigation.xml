@@ -122,7 +122,7 @@
     <fragment
         android:id="@+id/profileSettingsFragment"
         android:name="io.github.collins993.learnersguide.ui.dashboard.ui.settings.ProfileSettingsFragment"
-        android:label="ProfileSettingsFragment" >
+        android:label="Settings" >
         <action
             android:id="@+id/action_profileSettingsFragment_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment" />
@@ -133,7 +133,7 @@
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="io.github.collins993.learnersguide.ui.dashboard.ui.settings.ResetPasswordFragment"
-        android:label="fragment_reset_password"
+        android:label="Reset Password"
         tools:layout="@layout/fragment_reset_password" >
         <action
             android:id="@+id/action_resetPasswordFragment_to_profileSettingsFragment"
@@ -144,7 +144,7 @@
     <fragment
         android:id="@+id/aboutAppFragment"
         android:name="io.github.collins993.learnersguide.ui.dashboard.ui.settings.AboutAppFragment"
-        android:label="fragment_about_app"
+        android:label="About App"
         tools:layout="@layout/fragment_about_app" >
         <action
             android:id="@+id/action_aboutAppFragment_to_profileSettingsFragment"
