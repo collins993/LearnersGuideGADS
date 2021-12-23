@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_nav_suggestion_to_suggestedWebViewFragment"
             app:destination="@id/suggestedWebViewFragment" />
+        <action
+            android:id="@+id/action_nav_suggestion_to_otherUserProfileFragment"
+            app:destination="@id/otherUserProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
@@ -113,6 +116,9 @@
         <argument
             android:name="suggestedCourses"
             app:argType="io.github.collins993.learnersguide.model.SuggestedCourses" />
+        <action
+            android:id="@+id/action_suggestedWebViewFragment_to_otherUserProfileFragment"
+            app:destination="@id/otherUserProfileFragment" />
     </fragment>
     <activity
         android:id="@+id/editProfileActivity"
@@ -149,5 +155,20 @@
         <action
             android:id="@+id/action_aboutAppFragment_to_profileSettingsFragment"
             app:destination="@id/profileSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherUserProfileFragment"
+        android:name="io.github.collins993.learnersguide.ui.dashboard.ui.profile.OtherUserProfileFragment"
+        android:label=""
+        tools:layout="@layout/fragment_other_user_profile">
+        <action
+            android:id="@+id/action_otherUserProfileFragment_to_suggestedWebViewFragment"
+            app:destination="@id/suggestedWebViewFragment" />
+        <action
+            android:id="@+id/action_otherUserProfileFragment_to_nav_suggestion"
+            app:destination="@id/nav_suggestion" />
+        <argument
+            android:name="other_user"
+            app:argType="io.github.collins993.learnersguide.model.SuggestedCourses" />
     </fragment>
 </navigation>

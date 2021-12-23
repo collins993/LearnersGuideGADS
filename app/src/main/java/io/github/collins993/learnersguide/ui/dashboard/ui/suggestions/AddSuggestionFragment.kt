@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import io.github.collins993.learnersguide.R
 import io.github.collins993.learnersguide.databinding.FragmentAddSuggestionBinding
 import io.github.collins993.learnersguide.databinding.FragmentUserProfileBinding
@@ -26,6 +27,7 @@ class AddSuggestionFragment : Fragment(R.layout.fragment_add_suggestion) {
 
     private lateinit var viewModel: FirebaseViewModel
     private lateinit var binding: FragmentAddSuggestionBinding
+    private var suggestedCourses: SuggestedCourses? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,53 +42,60 @@ class AddSuggestionFragment : Fragment(R.layout.fragment_add_suggestion) {
         viewModel.getUserFromFirestore()
 
 
-        viewModel.getUserStatus.observe(viewLifecycleOwner, Observer { result ->
+        binding.addSuggestionBtn.setOnClickListener {
 
-            result?.let {
-                when (it) {
-                    is Resource.Success -> {
-                        val user = it.data
-                        Log.i("Users", user.toString())
+            viewModel.getUserStatus.observe(viewLifecycleOwner, Observer { result ->
+
+                result?.let {
+                    when (it) {
+                        is Resource.Success -> {
+                            hideProgressBar()
+
+                            val userList = it.data
+                            for (user in  userList!!){
+                                if (user.uid == FirebaseAuth.getInstance().currentUser?.uid){
+
+                                    if (validateTitle() && validateUrl()){
+                                        val title = binding.courseTitle.text.toString().trim()
+                                        val url = binding.courseUrl.text.toString().trim()
+
+                                        suggestedCourses = SuggestedCourses(
+                                            title = title,
+                                            url =  url,
+                                            username = user.username,
+                                            emailAddress = user.emailAddress,
+                                            firstname = user.firstname,
+                                            lastname = user.lastname,
+                                            img = user.img,
+                                            uid = user.uid,
+                                            date = System.currentTimeMillis()
+                                        )
 
 
+                                    }
 
-                        binding.addSuggestionBtn.setOnClickListener {
-
-                            if (validateTitle() && validateUrl()){
-                                val title = binding.courseTitle.text.toString().trim()
-                                val url = binding.courseUrl.text.toString().trim()
-
-                                val suggestedCourses = SuggestedCourses(
-                                    title = title,
-                                    url =  url,
-                                    username = user?.username,
-                                    emailAddress = user?.emailAddress,
-                                    firstname = user?.firstname,
-                                    lastname = user?.lastname,
-                                    img = user?.img,
-                                    uid = user?.uid,
-                                    date = System.currentTimeMillis()
-                                )
-
-                                viewModel.addSuggestion(suggestedCourses)
+                                }
                             }
+                            viewModel.addSuggestion(suggestedCourses!!)
 
                         }
+                        is Resource.Error -> {
 
-                    }
-                    is Resource.Error -> {
+                            hideProgressBar()
+                            val failedMessage =  it.message ?: "Unknown Error"
+                            Toast.makeText(activity,"Registration failed with $failedMessage", Toast.LENGTH_LONG).show()
 
-                        val failedMessage =  it.message ?: "Unknown Error"
-                        Toast.makeText(activity,"Registration failed with $failedMessage", Toast.LENGTH_LONG).show()
+                        }
+                        is Resource.Loading -> {
 
-                    }
-                    is Resource.Loading -> {
-
+                            showProgressBar()
+                        }
                     }
                 }
-            }
 
-        })
+            })
+        }
+
 
         viewModel.addSuggestionStatus.observe(viewLifecycleOwner, Observer { result ->
             result?.let{
@@ -100,6 +109,9 @@ class AddSuggestionFragment : Fragment(R.layout.fragment_add_suggestion) {
                         }
                     }
                     is Resource.Error -> {
+
+                        val failedMessage =  it.message ?: "Unknown Error"
+                        Toast.makeText(activity,"Registration failed with $failedMessage", Toast.LENGTH_LONG).show()
 
                     }
                     is Resource.Loading -> {
@@ -138,5 +150,13 @@ class AddSuggestionFragment : Fragment(R.layout.fragment_add_suggestion) {
             binding.txtInputLayoutUrl.isErrorEnabled = false
         }
         return true
+    }
+
+    private fun hideProgressBar() {
+        binding.progressCircular.visibility = View.INVISIBLE
+    }
+
+    private fun showProgressBar() {
+        binding.progressCircular.visibility = View.VISIBLE
     }
 }

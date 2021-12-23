@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import io.github.collins993.learnersguide.R
 import io.github.collins993.learnersguide.databinding.ActivityDashBoardBinding
 import io.github.collins993.learnersguide.databinding.NavHeaderDashBoardBinding
@@ -81,20 +82,25 @@ class DashBoardActivity : AppCompatActivity() {
                 when (it) {
 
                     is Resource.Success -> {
-                        val user = it.data
-                        Log.i("Users", user.toString())
+                        val userList = it.data
 
                         val header = navView.getHeaderView(0)
                         val username = header.findViewById<View>(R.id.username) as TextView
                         val emailAddress = header.findViewById<View>(R.id.email_address) as TextView
                         val img = header.findViewById<View>(R.id.imageView) as ImageView
 
-                        username.text = user?.username
-                        emailAddress.text = user?.emailAddress
+                        for (user in  userList!!){
+                            if (user.uid == FirebaseAuth.getInstance().currentUser?.uid){
+                                username.text = user?.username
+                                emailAddress.text = user?.emailAddress
 
-                        Glide.with(this)
-                            .load(user?.img)
-                            .into(img)
+                                Glide.with(this)
+                                    .load(user?.img)
+                                    .into(img)
+                            }
+                        }
+
+
 
 
                     }

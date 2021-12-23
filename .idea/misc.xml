@@ -24,7 +24,7 @@
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_dash_board.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_edit_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_login.xml" value="0.35648148148148145" />
-        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_reset_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_sign_up.xml" value="0.3605128205128205" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/activity_view_pager.xml" value="0.36666666666666664" />
@@ -35,6 +35,7 @@
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_add_suggestion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_favourites.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_other_user_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_reset_password.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_saved_web_view.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/Desktop/Stuffs/Android Projects/Learners_Guide-master/app/src/main/res/layout/fragment_suggest_screen.xml" value="0.36666666666666664" />

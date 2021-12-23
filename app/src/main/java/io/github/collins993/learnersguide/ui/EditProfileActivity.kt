@@ -72,13 +72,32 @@ class EditProfileActivity : AppCompatActivity() {
                 when (it) {
                     is Resource.Success -> {
 
-                        val user = it.data
-                        Glide.with(this)
-                            .load(user?.img)
-                            .into(binding.profileImg)
-                        binding.username.setText(user?.username, TextView.BufferType.EDITABLE)
-                        binding.firstname.setText(user?.firstname, TextView.BufferType.EDITABLE)
-                        binding.lastname.setText(user?.lastname, TextView.BufferType.EDITABLE)
+                        val userList = it.data
+
+                        for (user in  userList!!){
+                            if (user.uid == FirebaseAuth.getInstance().currentUser?.uid){
+                                Glide.with(this)
+                                    .load(user.img)
+                                    .into(binding.profileImg)
+
+                                binding.username.setText(user.username, TextView.BufferType.EDITABLE)
+                                binding.firstname.setText(user.firstname, TextView.BufferType.EDITABLE)
+                                binding.lastname.setText(user.lastname, TextView.BufferType.EDITABLE)
+                            }
+                        }
+
+
+
+                    }
+                    is Resource.Error -> {
+                        val failedMessage = it.message ?: "Unknown Error"
+                        Toast.makeText(
+                            this,
+                            "Registration failed with $failedMessage",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    is Resource.Loading -> {
 
                     }
                 }

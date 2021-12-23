@@ -12,6 +12,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +22,12 @@ import com.google.firebase.auth.FirebaseAuth
 import io.github.collins993.learnersguide.R
 import io.github.collins993.learnersguide.adapter.SuggestedCourseAdapter
 import io.github.collins993.learnersguide.databinding.FragmentHomeBinding
+import io.github.collins993.learnersguide.databinding.FragmentOtherUserProfileBinding
 import io.github.collins993.learnersguide.databinding.FragmentUserProfileBinding
 import io.github.collins993.learnersguide.db.CourseDatabase
+import io.github.collins993.learnersguide.model.SuggestedCourses
 import io.github.collins993.learnersguide.repository.Repository
+import io.github.collins993.learnersguide.ui.dashboard.ui.home.WebViewFragmentArgs
 import io.github.collins993.learnersguide.utils.Resource
 import io.github.collins993.learnersguide.viewmodel.FirebaseViewModel
 import io.github.collins993.learnersguide.viewmodel.FirebaseViewModelProviderFactory
@@ -31,63 +35,72 @@ import io.github.collins993.learnersguide.viewmodel.MyViewModel
 import io.github.collins993.learnersguide.viewmodel.ViewModelProviderFactory
 
 
-class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
+class OtherUserProfileFragment : Fragment(R.layout.fragment_other_user_profile) {
 
 
     private lateinit var viewModel: FirebaseViewModel
-    private lateinit var binding: FragmentUserProfileBinding
+    private lateinit var binding: FragmentOtherUserProfileBinding
     private lateinit var suggestedCourseAdapter: SuggestedCourseAdapter
+    val args: OtherUserProfileFragmentArgs by navArgs()
+    private var arrayList = ArrayList<SuggestedCourses>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding = FragmentUserProfileBinding.bind(view)
+        binding = FragmentOtherUserProfileBinding.bind(view)
         val firebaseViewModelProviderFactory = FirebaseViewModelProviderFactory(Application())
         viewModel = ViewModelProvider(
             this,
             firebaseViewModelProviderFactory
         ).get(FirebaseViewModel::class.java)
 
+        arrayList = ArrayList()
+
+        val user = args.otherUser
 
         viewModel.getUserFromFirestore()
 
-        viewModel.getUsersSuggestions()
+        viewModel.getAllCourseSuggestion()
 
         setUpRecyclerView()
 
-        viewModel.getUserStatus.observe(viewLifecycleOwner, Observer { result ->
+
+
+        Glide.with(this)
+            .load(user.img)
+            .into(binding.profileImg)
+
+        binding.username.text = user.username
+        binding.firstname.text = user.firstname
+        binding.lastname.text = user.lastname
+        binding.emailAddress.text = user.emailAddress
+
+
+        viewModel.getAllSuggestionStatus.observe(viewLifecycleOwner, Observer { result ->
 
             result?.let {
                 when (it) {
-
                     is Resource.Success -> {
-                        val userList = it.data
 
-                        for (user in  userList!!){
-                            if (user.uid == FirebaseAuth.getInstance().currentUser?.uid){
-                                Glide.with(this)
-                                    .load(user.img)
-                                    .into(binding.profileImg)
+                        val listOfSuggestedCourses = it.data
+                        for (course in listOfSuggestedCourses!!){
+                            if (course.uid == user.uid){
+                                arrayList.add(course)
 
-                                binding.username.text = user.username
-                                binding.firstname.text = user.firstname
-                                binding.lastname.text = user.lastname
-                                binding.emailAddress.text = user.emailAddress
                             }
                         }
+                        suggestedCourseAdapter.differ.submitList(arrayList)
 
 
                     }
                     is Resource.Error -> {
-
                         val failedMessage = it.message ?: "Unknown Error"
                         Toast.makeText(
                             activity,
                             "Registration failed with $failedMessage",
                             Toast.LENGTH_LONG
                         ).show()
-
                     }
                     is Resource.Loading -> {
 
@@ -95,65 +108,20 @@ class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
                 }
             }
 
-        })
-
-        viewModel.getUserSuggestionStatus.observe(viewLifecycleOwner, Observer { result ->
-
-            result?.let {
-                when (it) {
-                    is Resource.Success -> {
-                        suggestedCourseAdapter.differ.submitList(it.data)
-                    }
-                }
-            }
-
 
         })
 
-        binding.editProfile.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_profile_to_editProfileActivity)
-        }
 
         suggestedCourseAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("suggestedCourses", it)
             }
             findNavController().navigate(
-                R.id.action_nav_profile_to_suggestedWebViewFragment,
+                R.id.action_otherUserProfileFragment_to_suggestedWebViewFragment,
                 bundle
             )
         }
 
-        //function to Swipe to delete article from database
-        val itemTouchHelperCallBack = object : ItemTouchHelper.SimpleCallback(
-            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
-            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        ) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return true
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                val suggestedCourse = suggestedCourseAdapter.differ.currentList[position]
-
-                viewModel.deleteSuggestion(suggestedCourse)
-                Snackbar.make(binding.root, "Successfully Deleted Course", Snackbar.LENGTH_LONG)
-                    .apply {
-                         show()
-                    }
-            }
-
-        }
-
-        //Attach to recyclerview
-        ItemTouchHelper(itemTouchHelperCallBack).apply {
-            attachToRecyclerView(binding.rvUsersSuggestions)
-        }
 
     }
 

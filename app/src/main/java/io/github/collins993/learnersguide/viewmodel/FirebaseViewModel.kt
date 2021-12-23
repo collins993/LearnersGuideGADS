@@ -46,8 +46,8 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
     val addUserStatus: LiveData<Resource<String>> = _addUserStatus
 
     //
-    private val _getUserStatus = MutableLiveData<Resource<Users>>()
-    val getUserStatus: LiveData<Resource<Users>> = _getUserStatus
+    private val _getUserStatus = MutableLiveData<Resource<List<Users>>>()
+    val getUserStatus: LiveData<Resource<List<Users>>> = _getUserStatus
 
     //
     private val _addSuggestionStatus = MutableLiveData<Resource<String>>()
@@ -286,11 +286,14 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
             _addUserStatus.postValue(Resource.Loading())
 
             try {
-                firebaseUserId = auth?.currentUser?.uid.toString()
-                Firebase.firestore.collection("users")
-                    .document(firebaseUserId).set(user)
 
-                _addUserStatus.postValue(Resource.Success("User added Successfully"))
+                Firebase.firestore.collection("users").add(user).addOnSuccessListener {
+                    _addUserStatus.postValue(Resource.Success("User added Successfully"))
+                }.addOnFailureListener { e ->
+
+                    _addUserStatus.postValue(Resource.Error("Failed", e.toString()))
+                }
+
 
 
             } catch (e: Exception) {
@@ -323,14 +326,20 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
             var errorCode = -1
             try {
                 firebaseUserId = auth?.currentUser?.uid.toString()
-                Firebase.firestore.collection("users")
-                    .document(firebaseUserId).addSnapshotListener { value, error ->
-                        val user = value?.toObject<Users>()
+                Firebase.firestore.collection("users").get().addOnSuccessListener { documents ->
 
-                        if (user != null) {
-                            _getUserStatus.postValue(Resource.Success(user))
-                        }
-                    }
+                    val docs = documents.toObjects(Users::class.java)
+                    _getUserStatus.postValue(Resource.Success(docs))
+
+                }
+//                Firebase.firestore.collection("users")
+//                    .document(firebaseUserId).addSnapshotListener { value, error ->
+//                        val user = value?.toObject<Users>()
+//
+//                        if (user != null) {
+//                            _getUserStatus.postValue(Resource.Success(user))
+//                        }
+//                    }
 
 
             } catch (e: Exception) {

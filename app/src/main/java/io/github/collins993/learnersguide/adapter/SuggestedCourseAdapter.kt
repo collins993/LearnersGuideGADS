@@ -66,4 +66,6 @@ class SuggestedCourseAdapter() : RecyclerView.Adapter<SuggestedCourseAdapter.Cou
     }
 
 
+
+
 }

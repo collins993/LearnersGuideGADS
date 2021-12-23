@@ -14,6 +14,8 @@ import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import io.github.collins993.learnersguide.R
 import io.github.collins993.learnersguide.ui.authentication.LoginActivity
 import io.github.collins993.learnersguide.viewmodel.FirebaseViewModel
@@ -42,8 +44,17 @@ class ProfileSettingsFragment: PreferenceFragmentCompat(), SharedPreferences.OnS
 
 
         viewModel.getUserStatus.observe(this, {
-            editTxtUsername?.summary = it?.data?.username
-            editTxtUsername?.title = it?.data?.emailAddress
+
+            val userList = it.data
+
+            for (user in  userList!!){
+                if (user.uid == FirebaseAuth.getInstance().currentUser?.uid){
+                    editTxtUsername?.summary = user.username
+                    editTxtUsername?.title = user.emailAddress
+                }
+            }
+
+
 
         })
 
