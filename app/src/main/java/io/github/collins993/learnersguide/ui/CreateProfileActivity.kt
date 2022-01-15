@@ -90,7 +90,10 @@ class CreateProfileActivity : AppCompatActivity() {
                                     firstname = firstname,
                                     lastname = lastname,
                                     img = downloadUrl,
-                                    uid = auth.currentUser?.uid
+                                    uid = auth.currentUser?.uid,
+                                    facebookName = "",
+                                    linkedlnName = "",
+                                    githubName = ""
                                 )
 
                                 viewModel.addUserToFirestore(user)

@@ -55,5 +55,9 @@
     <string name="suggestion_msg">Help guide others. Add extra courses suggestion for other users</string>
     <string name="about_app_msg">Learners Guide is an educational app which helps students across the world to find the best courses to help further
         their knowledge in their field. Users can add a suggestion by inputting the title and the url link for the course they are suggesting so it can be viewed by other users.  </string>
+    <string name="facebook_username">Facebook Username</string>
+    <string name="linkedln_username">Linkedln Username</string>
+    <string name="github_username">Github Username</string>
+    <string name="edit">Edit</string>
 
 </resources>

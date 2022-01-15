@@ -75,6 +75,9 @@ class OtherUserProfileFragment : Fragment(R.layout.fragment_other_user_profile) 
         binding.firstname.text = user.firstname
         binding.lastname.text = user.lastname
         binding.emailAddress.text = user.emailAddress
+        binding.facebookIcon.text = user.facebookName
+        binding.linkedln.text = user.linkedlnName
+        binding.github.text = user.githubName
 
 
         viewModel.getAllSuggestionStatus.observe(viewLifecycleOwner, Observer { result ->

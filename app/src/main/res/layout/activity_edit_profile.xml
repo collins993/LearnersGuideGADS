@@ -34,14 +34,6 @@
                 android:layout_gravity="center"
                 android:textSize="25sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_img"
-                android:layout_marginTop="20dp"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/ic_baseline_photo_24"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -119,6 +111,82 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_input_layout_facebook"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:boxStrokeColor="@color/black"
+                app:errorIconDrawable="@drawable/ic_error"
+                android:hint="@string/facebook_username"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:id="@+id/facebook"
+                    android:textColor="@color/black"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_input_layout_Linkedln"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:boxStrokeColor="@color/black"
+                app:errorIconDrawable="@drawable/ic_error"
+                android:hint="@string/linkedln_username"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:id="@+id/linkedln"
+                    android:textColor="@color/black"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_input_layout_github"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:boxStrokeColor="@color/black"
+                app:errorIconDrawable="@drawable/ic_error"
+                android:hint="@string/github_username"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:id="@+id/github"
+                    android:textColor="@color/black"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/create_profile_btn"

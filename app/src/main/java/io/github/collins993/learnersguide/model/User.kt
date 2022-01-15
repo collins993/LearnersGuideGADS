@@ -6,5 +6,8 @@ data class Users(
     var firstname: String? = "",
     var lastname: String? = "",
     var img: String? = "",
+    var facebookName: String? = "",
+    var linkedlnName: String? = "",
+    var githubName: String? = "",
     var uid: String? = ""
 )

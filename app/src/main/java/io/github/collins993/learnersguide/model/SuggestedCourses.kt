@@ -12,16 +12,8 @@ data class SuggestedCourses(
     var lastname: String? = "",
     var img: String? = "",
     var uid: String? = "",
+    var facebookName: String? = "",
+    var linkedlnName: String? = "",
+    var githubName: String? = "",
     var date: Long? = -1
-
-): Serializable {
-
-    fun toCourse() : Courses {
-        return Courses(
-            title = title,
-            url = url,
-            headLine = firstname,
-            image = img
-        )
-    }
-}
+): Serializable

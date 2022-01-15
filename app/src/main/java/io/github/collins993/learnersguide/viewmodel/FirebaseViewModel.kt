@@ -19,6 +19,7 @@ import io.github.collins993.learnersguide.model.Users
 import io.github.collins993.learnersguide.utils.Resource
 import kotlinx.coroutines.launch
 import okhttp3.internal.wait
+import kotlin.math.sin
 
 class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
     private var auth: FirebaseAuth? = null
@@ -44,6 +45,14 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
     //
     private val _addUserStatus = MutableLiveData<Resource<String>>()
     val addUserStatus: LiveData<Resource<String>> = _addUserStatus
+
+    //
+    private val _updateInfoUserStatus = MutableLiveData<Resource<String>>()
+    val updateInfoUserStatus: LiveData<Resource<String>> = _updateInfoUserStatus
+
+    //
+    private val _updateUserStatus = MutableLiveData<Resource<String>>()
+    val updateUserStatus: LiveData<Resource<String>> = _updateUserStatus
 
     //
     private val _getUserStatus = MutableLiveData<Resource<List<Users>>>()
@@ -295,7 +304,6 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
                 }
 
 
-
             } catch (e: Exception) {
                 e.printStackTrace()
                 if (errorCode != -1) {
@@ -317,7 +325,45 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun updateUserInfo(user: Users) {
+    fun updateUserInfo(oldUser: Users, newProfileInfoMap: Map<String, Any>) {
+
+        var errorCode = -1
+        viewModelScope.launch {
+            _updateUserStatus.postValue(Resource.Loading())
+
+            try {
+                Firebase.firestore.collection("users")
+                    .whereEqualTo("uid", oldUser.uid).addSnapshotListener { querySnapshot, error ->
+                        for (document in querySnapshot!!) {
+
+                            Firebase.firestore.collection("users").document(document.id)
+                                .set(newProfileInfoMap, SetOptions.merge())
+
+                        }
+                        _updateUserStatus.postValue(Resource.Success("Profile Updated"))
+
+                    }
+
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                if (errorCode != -1) {
+                    _updateUserStatus.postValue(
+                        Resource.Error(
+                            "Failed with Error code $errorCode",
+                            e.toString()
+                        )
+                    )
+                } else {
+                    _updateUserStatus.postValue(
+                        Resource.Error(
+                            "Failed with exception ${e.message}",
+                            e.toString()
+                        )
+                    )
+                }
+            }
+        }
 
     }
 
@@ -325,21 +371,11 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             var errorCode = -1
             try {
-                firebaseUserId = auth?.currentUser?.uid.toString()
-                Firebase.firestore.collection("users").get().addOnSuccessListener { documents ->
 
-                    val docs = documents.toObjects(Users::class.java)
-                    _getUserStatus.postValue(Resource.Success(docs))
-
+                Firebase.firestore.collection("users").addSnapshotListener { documents, error ->
+                    val docs = documents?.toObjects(Users::class.java)
+                    _getUserStatus.postValue(Resource.Success(docs!!))
                 }
-//                Firebase.firestore.collection("users")
-//                    .document(firebaseUserId).addSnapshotListener { value, error ->
-//                        val user = value?.toObject<Users>()
-//
-//                        if (user != null) {
-//                            _getUserStatus.postValue(Resource.Success(user))
-//                        }
-//                    }
 
 
             } catch (e: Exception) {
@@ -452,6 +488,56 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun updateSuggestionProfileInfo(
+        updatedSuggestionProfileInfo: SuggestedCourses,
+        newProfileInfoMap: Map<String, Any>
+    ) {
+
+        var errorCode = -1
+        viewModelScope.launch {
+            _updateUserStatus.postValue(Resource.Loading())
+
+            try {
+
+                Firebase.firestore.collection("suggested_courses")
+                    .whereEqualTo("uid", updatedSuggestionProfileInfo.uid)
+                    .addSnapshotListener { querySnapshot, error ->
+
+                        for (document in querySnapshot!!) {
+
+                            Firebase.firestore.collection("suggested_courses").document(document.id)
+                                .set(newProfileInfoMap, SetOptions.merge())
+
+
+                        }
+                        _updateInfoUserStatus.postValue(Resource.Success("Profile Info Updated"))
+
+
+                    }
+
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                if (errorCode != -1) {
+                    _updateUserStatus.postValue(
+                        Resource.Error(
+                            "Failed with Error code $errorCode",
+                            e.toString()
+                        )
+                    )
+                } else {
+                    _updateUserStatus.postValue(
+                        Resource.Error(
+                            "Failed with exception ${e.message}",
+                            e.toString()
+                        )
+                    )
+                }
+            }
+        }
+
+    }
+
     fun getAllCourseSuggestion() {
 
         viewModelScope.launch {
@@ -460,13 +546,13 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
 
             try {
 
-                Firebase.firestore.collection("suggested_courses").get()
-                    .addOnSuccessListener { documents ->
+                Firebase.firestore.collection("suggested_courses")
+                    .addSnapshotListener { documents, error ->
 
-                        val suggestedCourseList = documents.toObjects(SuggestedCourses::class.java)
-                        _getAllSuggestionStatus.postValue(Resource.Success(suggestedCourseList))
+                        val suggestedCourseList = documents?.toObjects(SuggestedCourses::class.java)
+                        _getAllSuggestionStatus.postValue(Resource.Success(suggestedCourseList!!))
+
                     }
-
             } catch (e: Exception) {
                 e.printStackTrace()
                 if (errorCode != -1) {
@@ -499,12 +585,11 @@ class FirebaseViewModel(app: Application) : AndroidViewModel(app) {
 
                 Firebase.firestore.collection("suggested_courses")
                     .whereEqualTo("uid", firebaseUserId)
-                    .get()
-                    .addOnSuccessListener { documents ->
-
-                        val suggestedCourseList = documents.toObjects(SuggestedCourses::class.java)
-                        _getUserSuggestionStatus.postValue(Resource.Success(suggestedCourseList))
+                    .addSnapshotListener { documents, error ->
+                        val suggestedCourseList = documents?.toObjects(SuggestedCourses::class.java)
+                        _getUserSuggestionStatus.postValue(Resource.Success(suggestedCourseList!!))
                     }
+
 
             } catch (e: Exception) {
                 e.printStackTrace()

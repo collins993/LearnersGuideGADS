@@ -60,6 +60,7 @@ class SuggestionFragment : Fragment() {
             result?.let {
                 when(it){
                    is Resource.Success -> {
+                       val f = suggestdCourseAdapter.differ.currentList
                        suggestdCourseAdapter.differ.submitList(it.data)
                     }
                 }
