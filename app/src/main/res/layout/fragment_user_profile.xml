@@ -65,6 +65,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/profile_img"
                             android:layout_centerInParent="true"
+                            android:textColor="@color/white"
                             android:background="@android:color/transparent"
                             android:text="@string/edit" />
 

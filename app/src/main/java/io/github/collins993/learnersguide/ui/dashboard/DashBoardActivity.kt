@@ -89,19 +89,16 @@ class DashBoardActivity : AppCompatActivity() {
                         val emailAddress = header.findViewById<View>(R.id.email_address) as TextView
                         val img = header.findViewById<View>(R.id.imageView) as ImageView
 
-                        for (user in  userList!!){
-                            if (user.uid == FirebaseAuth.getInstance().currentUser?.uid){
-                                username.text = user?.username
-                                emailAddress.text = user?.emailAddress
+                        for (user in userList!!) {
+                            if (user.uid == FirebaseAuth.getInstance().currentUser?.uid) {
+                                username.text = user.username
+                                emailAddress.text = user.emailAddress
 
                                 Glide.with(this)
-                                    .load(user?.img)
+                                    .load(user.img)
                                     .into(img)
                             }
                         }
-
-
-
 
                     }
                     is Resource.Error -> {
@@ -136,7 +133,6 @@ class DashBoardActivity : AppCompatActivity() {
                 viewModel.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
-                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show()
                 return true
             }
         }

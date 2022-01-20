@@ -316,6 +316,7 @@ class EditProfileActivity : AppCompatActivity() {
      * field must not be empy
      */
     private fun validateFirstName(): Boolean {
+
         if (binding.firstname.text.toString().trim().isEmpty()) {
             binding.txtInputLayoutFirstname.error = "Required Field!"
             binding.firstname.requestFocus()
@@ -323,6 +324,7 @@ class EditProfileActivity : AppCompatActivity() {
         } else {
             binding.txtInputLayoutFirstname.isErrorEnabled = false
         }
+
         return true
     }
 

@@ -76,11 +76,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun hideProgressBar() {
         binding.paginationProgressBar.visibility = View.INVISIBLE
-        //isLoading = false
+
     }
 
     private fun showProgressBar() {
         binding.paginationProgressBar.visibility = View.VISIBLE
-        //isLoading = true
+
     }
 }

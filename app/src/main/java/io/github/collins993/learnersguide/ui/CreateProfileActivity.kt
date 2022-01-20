@@ -131,7 +131,6 @@ class CreateProfileActivity : AppCompatActivity() {
                     is Resource.Success -> {
                         hideProgressBar()
                         if (it.data.equals("User added Successfully", ignoreCase = true)) {
-                            //Snackbar.make(binding.root, "Registration Successfully", Snackbar.LENGTH_SHORT).show()
                             startActivity(Intent(this, DashBoardActivity::class.java))
                             finish()
                         } else {
