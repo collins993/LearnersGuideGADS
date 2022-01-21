@@ -15,5 +15,5 @@
 ![Screenshot_20220121-063704_Learners Guide](https://user-images.githubusercontent.com/74765532/150473716-b3c5ad8d-7d83-4a88-8969-797d48d80e87.jpg)
 ![Screenshot_20220121-063719_Learners Guide](https://user-images.githubusercontent.com/74765532/150473718-e1d95768-e070-4aff-afdc-4d7f6e1e7de1.jpg)
 ![Screenshot_20220121-063802_Learners Guide](https://user-images.githubusercontent.com/74765532/150473720-d6625c0e-0bfe-4416-9c5a-580a515b72df.jpg)
-![Screenshot_20220121-063813_Learners Guide](https://user-images.githubusercontent.com/74765532/150473723-70685ad2-6d7d-4b4a-b823-6a8c03c571c4.jpg)
+![Screenshot_20220121-063813_Learners Guide](https://user-images.githubusercontent.com/74765532/150474140-5081b286-2a63-4bd6-a4fc-0e06b074caa2.jpg)
 
