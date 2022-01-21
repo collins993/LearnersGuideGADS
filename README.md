@@ -3,6 +3,10 @@
 Learners Guide is an educational app which helps learners across the world to find the best courses to help further
 their knowledge in their various fields.Users can sign up. Users can add a suggestion by inputting the title and the url link for the course they are suggesting so it can be viewed by other users.
 
+APP FEATURES
+
+**
+
 
 
 ![Screenshot_20211223-124730_Learners Guide](https://user-images.githubusercontent.com/74765532/150473702-e17afe4f-0791-495c-a95d-e6591d7bc9c2.jpg)
