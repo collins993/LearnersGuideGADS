@@ -20,6 +20,9 @@ Libraries used:
 **Glide
 **Preference
 
+App Link 
+
+https://appetize.io/app/60p5cjy6qyqjd2dtk0xa38jmn0?device=nexus7&osVersion=8.1&scale=50
 
 
 ![Screenshot_20211223-124730_Learners Guide](https://user-images.githubusercontent.com/74765532/150473702-e17afe4f-0791-495c-a95d-e6591d7bc9c2.jpg)
