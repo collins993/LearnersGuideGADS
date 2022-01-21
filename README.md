@@ -3,9 +3,22 @@
 Learners Guide is an educational app which helps learners across the world to find the best courses to help further
 their knowledge in their various fields.Users can sign up. Users can add a suggestion by inputting the title and the url link for the course they are suggesting so it can be viewed by other users.
 
-APP FEATURES
+Author: Collins Nze
 
-**
+The app uses data from the udemy website as the data source. The app currently displays data of courses from the website
+
+Libraries used:
+**Retrofit
+**GSON
+**Room Database
+**View-model
+**Coroutines
+**Firebase Authentication
+**Firebase Storage
+**Firebse Firestore
+**Navigation Component
+**Glide
+**Preference
 
 
 
