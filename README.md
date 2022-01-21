@@ -1,6 +1,7 @@
 # LearnersGuideGADS
 
-
+Learners Guide is an educational app which helps learners across the world to find the best courses to help further
+their knowledge in their various fields.Users can sign up. Users can add a suggestion by inputting the title and the url link for the course they are suggesting so it can be viewed by other users.
 
 
 
